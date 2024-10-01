@@ -1,0 +1,14 @@
+---
+import Link from "@/Components/link.astro"
+
+interface Props {
+    heading: string
+    link: string
+}
+
+const {heading, link} = Astro.props
+---
+<article>
+    <h3>{heading}</h3>
+    <Link href={link} label="Ver Receta"/>
+</article>
