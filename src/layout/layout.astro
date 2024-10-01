@@ -1,0 +1,186 @@
+---
+interface Props{
+    title: string
+}
+const {title}=Astro.props
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="preload" href="/fonts/Dosis.woff2" as="font" type="font/woff2" crossorigin> 
+		<link rel="preload" href="/fonts/Nunito.woff2" as="font" type="font/woff2" crossorigin> 
+		<link rel="preload" href="/fonts/MontserratAlternates.woff2" as="font" type="font/woff2" crossorigin> 
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot/>
+	</body>
+</html>
+
+<style is:global>
+
+/* Variables Globales */
+:root {
+	/* Colores */
+	--color-primary: #4e3b31;
+	--color-secondary: #ffbf00;
+	--color-accent: #af860c;
+	--color-bg: #e5e5e5;
+	--color-text: #252424;
+	--color-text-light: #4e4d4d;
+
+
+	/* Tipografía base (para móvil) */
+	--font-heading: "Montserrat Alternates", sans-serif;;
+	--font-secondary:"Dosis", sans-serif;
+	--font-base: "Nunito", sans-serif;
+	--font-size-base: 14px;        /* Texto principal en móvil */
+	--font-size-h1: 3.815rem;        /* Título h1 en móvil */
+	--font-size-h2: 1.802rem;        /* Título h2 en móvil */
+	--font-size-h3: 1.602rem;         /* Título h6 en móvil */
+	--font-size-small: 0.889rem;     /* Texto pequeño en móvil */
+
+	/* Espaciado */
+	--spacing-1: 0.75rem; /* 12px (intermedio) */
+	--spacing-2: 1.5rem;  /* 24px */
+	--spacing-3: 2rem;    /* 32px */
+		--spacing-4: 3.5rem;  /* 56px */
+		--spacing-5: 4rem;    /* 64px */
+		--spacing-6: 6rem;    /* 96px */
+
+	/* Layout (para móvil) */
+	--container-width: 100%;       /* Contenedor en móvil */
+
+	/* Otros */
+	--border-radius: 0px;
+	--transition: 0.3s ease;
+	}
+
+	/* Reseteo básico */
+	* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	}
+
+	html {
+	font-size: 100%; /* 14px en móvil */
+	scroll-behavior: smooth;
+	}
+
+	body {
+	font-family: var(--font-base);
+	font-size: var(--font-size-base);
+	line-height: 1.6;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	margin: 0;
+	padding: 0;
+	}
+
+	/* Tipografía */
+	h1 {
+	font-family: var(--font-heading);
+	font-size: var(--font-size-h1);
+	margin-bottom: var(--spacing-2);
+	}
+
+	h2 {
+	font-family: var(--font-secondary);
+	font-size: var(--font-size-h2);
+	margin-bottom: var(--spacing-3);
+	}
+
+	h3 {
+	font-family: var(--font-secondary);
+	font-size: var(--font-size-h3);
+	margin-bottom: var(--spacing-2);
+	}
+
+	p {
+	font-size: var(--font-size-base);
+	color: var(--color-text-light);
+	}
+
+	.small-text {
+	font-size: var(--font-size-small);
+	color: var(--color-text-light);
+	}
+
+	a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: color var(--transition);
+	}
+
+	a:hover {
+	color: var(--color-accent);
+	}
+
+	/* Contenedor */
+	.container {
+	max-width: var(--container-width);
+	margin: 0 auto;
+	padding: 0 var(--spacing-3);
+	}
+
+	/* Medios Responsivos */
+
+	/* Tablet */
+	@media (min-width: 768px) {
+	:root {
+		/* Tipografía en tablet */
+		--font-size-base: 16px;        /* Texto principal */
+		--font-size-h1: 3.815rem;        /* Título h1 */
+		--font-size-h2: 2.488rem;          /* Título h2 */
+		--font-size-h3: 2.074rem;        /* Título h3 */      /* Título h6 */
+		--font-size-small: 0.875rem;   /* Texto pequeño */
+
+		/* Layout en tablet */
+		--container-width: 750px;
+	}
+
+	.container {
+		padding: 0 var(--spacing-4);
+	}
+	}
+
+	/* Desktop */
+	@media (min-width: 1024px) {
+	:root {
+		/* Tipografía en desktop */
+		--font-size-base: 16px;        /* Texto principal */
+		--font-size-h1: 182.25px;        /* Título h1 */
+		--font-size-h2: 3.052rem;        /* Título h2 */
+		--font-size-h3: 2.441rem;          /* Título h3 */ 
+		--font-size-small:0.8rem;       /* Texto pequeño */
+
+		/* Layout en desktop */
+		--container-width: 1200px;
+	}
+
+	.container {
+		padding: 0 var(--spacing-large);
+	}
+}
+	/*Tipografia */
+	@font-face {
+		font-family:"Montserrat Alternates" ;
+		src: url(/fonts/MontserratAlternates.woff2) format(woff2);
+		font-weight: 800;
+	}
+
+	@font-face {
+		font-family:"Dosis" ;
+		src: url(/fonts/Dosis.woff2) format(woff2);
+		font-weight: 500;
+	}
+
+	@font-face {
+		font-family:"Nunito" ;
+		src: url(/fonts/Nunito.woff2) format(woff2);
+		font-weight: 500;
+	}
+</style>
